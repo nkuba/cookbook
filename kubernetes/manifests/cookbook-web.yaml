@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: cookbook
+  labels:
+    component: web
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: web
+      nodePort: 32080
+  selector:
+    component: web
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: cookbook
+  labels:
+    component: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+      - name: cookbook-web
+        image: nkuba/cookbook-web
+        ports:
+        - name: web
+          containerPort: 3080
+        env:
+          - name: REST_HOST
+            value: "rest"
+          - name: REST_PORT
+            value: "3001"
+        imagePullPolicy: Always

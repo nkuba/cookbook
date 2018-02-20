@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+  namespace: cookbook
+  labels:
+    component: mongo
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    component: mongo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+  namespace: cookbook
+  labels:
+    component: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mongo
+  template:
+    metadata:
+      labels:
+        component: mongo
+    spec:
+      containers:
+      - name: mongo
+        image: mongo
+        ports:
+        - name: mongo
+          containerPort: 27017
+          hostPort: 27017
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
+        imagePullPolicy: Always
+      volumes:
+#      TODO: Change to persistent node independent storage
+        - name: mongo-persistent-storage
+          hostPath:
+            path: /var/mongo/data

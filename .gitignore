@@ -1,0 +1,10 @@
+### Idea IntelliJ
+# IntelliJ project files
+.idea/
+*.iml
+
+*.log
+
+# Node.js files
+.tern-project
+package-lock.json

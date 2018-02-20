@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cookbook Web App</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+  <body>
+    <h1>Cookbook Web App</h1>
+    <table class="blueTable">
+      <tr>
+        <th>Id</th>
+        <th>Meal</th>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th>Description</th>
+        <th>Link</th>
+      </tr>
+
+      <% for (var i = 0; i < data.length; i++) { %>
+        <tr>
+          <td><%= data[i].id %></td>
+          <td><%= data[i].meal %></td>
+          <td><%= data[i].name %></td>
+          <td><%= JSON.stringify(data[i].ingredients) %></td>
+          <td><%= data[i].description %></td>
+          <td><%= data[i].link %></td>
+        </tr>
+      <% } %>
+    </table>
+    <div id="footer">
+      <span class="footer-key">Hostname:</span><span id="hostname"><%= hostname %></span><br>
+      <span class="footer-key">Source data:</span><br>
+      <span id="source"><%= JSON.stringify(data) %></span>
+    </div>
+  </body>
+</html>

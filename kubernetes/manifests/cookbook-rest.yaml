@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest
+  namespace: cookbook
+  labels:
+    component: rest
+spec:
+  type: NodePort
+  ports:
+    - port: 3001
+      targetPort: rest
+      nodePort: 32079
+  selector:
+    component: rest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest
+  namespace: cookbook
+  labels:
+    component: rest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: rest
+  template:
+    metadata:
+      labels:
+        component: rest
+    spec:
+      containers:
+      - name: node-rest
+        image: nkuba/cookbook-rest
+        ports:
+        - name: rest
+          containerPort: 3001
+        env:
+          - name: MONGO_HOST
+            value: "mongo"
+          - name: MONGO_PORT
+            value: "27017"
+        imagePullPolicy: Always
