@@ -22,7 +22,7 @@ metadata:
   labels:
     component: web
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       component: web
@@ -43,3 +43,7 @@ spec:
           - name: REST_PORT
             value: "3001"
         imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "128Mi"

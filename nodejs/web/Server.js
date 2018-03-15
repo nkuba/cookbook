@@ -38,6 +38,12 @@ http.request(options, function(res) {
   });
 }).end();
 
+/**
+ * @api {get} / Request Cookbook Web Page
+ * @apiName GetWebPage
+ * @apiGroup WebPage
+ *
+ */
 app.get('/', function (req, res) {
     res.render('index', { hostname: hostname, data: data })
 })

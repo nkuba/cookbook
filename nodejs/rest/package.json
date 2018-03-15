@@ -1,6 +1,6 @@
 {
   "name": "cookbook-rest",
-  "version": "1.3",
+  "version": "1.4.0",
   "description": "",
   "main": "Server.js",
   "dependencies": {

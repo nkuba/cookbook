@@ -1,0 +1,7 @@
+{
+  "name": "cookbook-docs",
+  "version": "1.4.0",
+  "description": "Documentation",
+  "title": "Cookbook API Docs",
+  "url" : "https://api.github.com/v1"
+}

@@ -5,3 +5,6 @@ This repository contains [Cookbook application](nodejs) written in Node.js and [
 For Kubernetes cluster bootstrapping refer to [k8s-cluster-bootstrap](https://github.com/nkuba/k8s-cluster-bootstrap) project.
 
 [Tests](test) can be used to validate deployed application.
+
+<!-- TODO: Refactor the app, see example: 
+https://github.com/dockersamples/example-voting-app -->

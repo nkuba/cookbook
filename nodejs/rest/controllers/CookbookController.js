@@ -1,5 +1,11 @@
 const cookbookModel = require("../models/CookbookModel");
 
+/**
+ * @api {get} /rest/cookbook Request all cookbooks
+ * @apiName GetCookbook
+ * @apiGroup Cookbook
+ *
+ */
 exports.getCookbook = function(req, res) {
   var response = {};
 
@@ -12,6 +18,7 @@ exports.getCookbook = function(req, res) {
     res.json(response);
   })
 }
+
 
 exports.postRecipe = function(req, res) {
   var recipe = new cookbookModel(req.body);
